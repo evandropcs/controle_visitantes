@@ -1,0 +1,14 @@
+virtualenv -p python3.8 .venv (Instala embiente virtual e python)
+pip install Django==3.0.0
+
+MUDAR IDIOMA
+settings
+LANGUAGE_CODE = 'pt-br'
+
+TIME_ZONE = 'America/Sao_Paulo'
+
+python manage.py makemigrations usuarios(Cria um arquivo de migração com todas as alterações que devem ser feitas no db, tabelas e atributos DO APP USUARIOS)
+
+python manage.py createsuperuser (cria um super usuario)
+e-mail: buserteco@buser.com.br
+senha: 12345678
