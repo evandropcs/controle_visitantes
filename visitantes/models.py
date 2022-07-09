@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Visitantes(models.Model):
+class Visitante(models.Model):
 
     nome_completo = models.CharField(
         verbose_name="Nome completo",
@@ -13,14 +13,14 @@ class Visitantes(models.Model):
         max_length=11,
     )
 
-    data_nascimento = models.DateTimeField(
+    data_nascimento = models.DateField(
         verbose_name="Data de nascimento",
         auto_now=False,
         auto_now_add=False,
     )
 
     numero_casa = models.PositiveSmallIntegerField(
-        verbose_name="Número da casa"
+        verbose_name="Número da casa a ser visitada"
     )
 
     placa_veiculo = models.CharField(
@@ -28,7 +28,7 @@ class Visitantes(models.Model):
         max_length=7,
         blank=True,
         null=True,
-    )
+        )
 
     horario_chegada = models.DateTimeField(
         verbose_name="Horário de chegada na portaria",
@@ -38,15 +38,15 @@ class Visitantes(models.Model):
     horario_saida = models.DateTimeField(
         verbose_name="Horário de saída do condominio",
         auto_now=False,
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
     )
 
     horario_autorizacao_entrada = models.DateTimeField(
         verbose_name="Horário de autorização de entrada",
         auto_now=False,
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
     )
 
     morador_responsavel = models.CharField(
@@ -54,3 +54,18 @@ class Visitantes(models.Model):
         max_length=256,
         blank=True,
     )
+
+    registrado_por = models.ForeignKey(
+        "porteiros.Porteiro",
+        verbose_name="Porteiro responsavel pelo registro",
+        on_delete=models.PROTECT
+    )
+
+    class Meta:
+        verbose_name = "Visitante"
+        verbose_name_plural = "Visitantes"
+        db_table = "visitante"
+
+    def __str__(self):
+        return self.nome_completo
+
