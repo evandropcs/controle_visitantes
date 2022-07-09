@@ -3,5 +3,11 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse('Olá Mundo')
+
+    contex = {
+            "name_pagina": "Início da Dashboard",
+    }
+
+    return render(request, 'index.html', contex)
+
 

@@ -12,3 +12,6 @@ python manage.py makemigrations usuarios(Cria um arquivo de migração com todas
 python manage.py createsuperuser (cria um super usuario)
 e-mail: buserteco@buser.com.br
 senha: 12345678
+
+
+PAREI AQUI: https://www.udemy.com/course/djangoframeworknapratica/learn/lecture/20390253#overview
